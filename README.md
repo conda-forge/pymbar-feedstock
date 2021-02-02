@@ -215,6 +215,7 @@ Feedstock Maintainers
 =====================
 
 * [@Lnaden](https://github.com/Lnaden/)
+* [@jaimergp](https://github.com/jaimergp/)
 * [@jchodera](https://github.com/jchodera/)
 * [@mrshirts](https://github.com/mrshirts/)
 
