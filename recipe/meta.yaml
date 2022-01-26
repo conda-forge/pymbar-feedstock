@@ -1,6 +1,6 @@
 {% set name = "pymbar" %}
-{% set version = "3.0.5" %}
-{% set sha256 = "a9bdfa37083757fe6ad83211a87aa18d51c04f8d87609752b86165a6e9730b98" %}
+{% set version = "3.0.6" %}
+{% set sha256 = "aed047dd0a4b1d90489c496f6822ed2a6040ab3b7683e59cd37e141870e30b62" %}
 
 package:
   name: {{ name }}
@@ -12,8 +12,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
@@ -40,7 +40,7 @@ about:
   doc_url: http://pymbar.readthedocs.io/
   license: MIT
   license_file: LICENSE
-  summary: 'Python implementation of the multistate Bennett acceptance ratio (MBAR) method.'
+  summary: Python implementation of the multistate Bennett acceptance ratio (MBAR) method.
 
 extra:
   recipe-maintainers:
@@ -48,3 +48,5 @@ extra:
     - jchodera
     - mrshirts
     - jaimergp
+    - mikemhenry
+    - ijpulidos
