@@ -32,6 +32,8 @@ requirements:
     - scipy >=1.0.0
     - six
     - numexpr
+    - jax
+    - jaxlib
 
 test:
   imports:
