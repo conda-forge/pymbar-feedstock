@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: true  # [py<38] 
+  skip: true  # [python_impl == 'pypy' and py<38] 
   number: 0
   script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
 
@@ -26,12 +26,10 @@ requirements:
     - python
     - setuptools
     - numpy
-    - six
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - scipy >=1.0.0
-    - six
     - numexpr
     - jax  # [unix]
     - jaxlib  # [unix]
