@@ -31,6 +31,7 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - scipy >=1.0.0
     - numexpr
+    - six
 
 test:
   imports:
