@@ -1,6 +1,6 @@
 {% set name = "pymbar" %}
-{% set version = "4.0.1" %}
-{% set sha256 = "f8e52d5b2f39b02872bf9c01424624bcb2913c41153160f6529098775eea7656" %}
+{% set version = "3.1.0" %}
+{% set sha256 = "41cd65cbd89e1ae2f5cf08434ab91533512343185f48b4edb2e704616e0896cf" %}
 
 package:
   name: {{ name }}
@@ -12,7 +12,6 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: true  # [python_impl == 'pypy'] 
   number: 0
   script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
 
@@ -26,13 +25,13 @@ requirements:
     - python
     - setuptools
     - numpy
+    - six
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - scipy >=1.0.0
     - numexpr
-    - jax  # [unix]
-    - jaxlib  # [unix]
+    - six
 
 test:
   imports:
