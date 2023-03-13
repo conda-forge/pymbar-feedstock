@@ -13,7 +13,7 @@ source:
 
 build:
   skip: true  # [python_impl == 'pypy'] 
-  number: 1
+  number: 2
   script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -33,6 +33,9 @@ requirements:
     - numexpr
     - jax  # [unix]
     - jaxlib  # [unix]
+  run_constrained:
+    - jax >=0.3
+    - jaxlib >=0.3
 
 test:
   imports:
