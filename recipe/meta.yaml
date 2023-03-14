@@ -32,7 +32,6 @@ requirements:
     - scipy >=1.0.0
     - numexpr
     - jax  # [unix]
-    - jaxlib  # [unix]
   run_constrained:
     - jax >=0.3
     - jaxlib >=0.3
