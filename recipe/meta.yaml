@@ -33,7 +33,6 @@ requirements:
     - numexpr
     - jax  # [unix]
   run_constrained:
-    - jax >=0.3
     - jaxlib >=0.3
 
 test:
