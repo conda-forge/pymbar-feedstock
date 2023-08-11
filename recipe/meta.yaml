@@ -40,13 +40,13 @@ outputs:
 
   - name: {{ name }}
     requirements:
-    host:
-      - python
-    run:
-      - {{ pin_subpackage('pymbar-core', exact=True) }}
-      - jax  # [unix]
-    run_constrained:
-      - jaxlib >=0.3
+      host:
+        - python
+      run:
+        - {{ pin_subpackage('pymbar-core', exact=True) }}
+        - jax  # [unix]
+      run_constrained:
+        - jaxlib >=0.3
 
 about:
   home: http://github.com/choderalab/pymbar
