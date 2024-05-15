@@ -16,6 +16,9 @@ source:
 build:
   skip: true  # [python_impl == 'pypy'] 
   number: {{ build }}
+  string: >-
+    core_{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [accelerator == 'core']
+    jax_{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [accelerator == 'jax']
 
 test:
   imports:
