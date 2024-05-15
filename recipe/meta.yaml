@@ -1,6 +1,7 @@
 {% set name = "pymbar" %}
 {% set version = "4.0.3" %}
 {% set sha256 = "ace0723302230f8ecc8f44fb34f92626be3f15b9f9ea085d944d265a71ab4778" %}
+{% set build = build + 100 %}  # [accelerator == 'jax']
 
 package:
   name: {{ name }}
@@ -13,14 +14,14 @@ source:
 
 build:
   skip: true  # [python_impl == 'pypy'] 
-  number: 1
+  number: 2
 
 test:
   imports:
     - pymbar
 
 outputs:
-  - name: {{ name }}-core
+  - name: {{ name }}
     script: install.sh
     requirements:
       build:
@@ -37,16 +38,9 @@ outputs:
         - {{ pin_compatible('numpy') }}
         - scipy >=1.0.0
         - numexpr
-
-  - name: {{ name }}
-    requirements:
-      host:
-        - python
-      run:
-        - {{ pin_subpackage('pymbar-core', exact=True) }}
-        - jax  # [unix]
+        - jax  # [unix and accelerator == 'jax']
       run_constrained:
-        - jaxlib >=0.3
+        - jaxlib >=0.3  # [unix and accelerator == 'jax']
 
 about:
   home: http://github.com/choderalab/pymbar
