@@ -1,6 +1,7 @@
 {% set name = "pymbar" %}
 {% set version = "4.0.3" %}
 {% set sha256 = "ace0723302230f8ecc8f44fb34f92626be3f15b9f9ea085d944d265a71ab4778" %}
+{% set build = 2 %}
 {% set build = build + 100 %}  # [accelerator == 'jax']
 
 package:
@@ -14,7 +15,7 @@ source:
 
 build:
   skip: true  # [python_impl == 'pypy'] 
-  number: 2
+  number: {{ build }}
 
 test:
   imports:
