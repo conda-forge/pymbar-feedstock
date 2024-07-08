@@ -13,7 +13,7 @@ source:
 
 build:
   skip: true  # [python_impl == 'pypy'] 
-  number: 1
+  number: 2
 
 test:
   imports:
@@ -28,13 +28,13 @@ outputs:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
       host:
         - python
         - setuptools
         - numpy
       run:
         - python
-        - {{ pin_compatible('numpy') }}
         - scipy >=1.0.0
         - numexpr
 
