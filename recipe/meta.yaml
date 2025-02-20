@@ -13,11 +13,15 @@ source:
 
 build:
   skip: true  # [python_impl == 'pypy'] 
-  number: 2
+  number: 3
 
 test:
   imports:
     - pymbar
+  requires:
+    - pytest
+  commands:
+    - pytest --pyargs pymbar
 
 outputs:
   - name: {{ name }}-core
@@ -35,7 +39,6 @@ outputs:
         - numpy
       run:
         - python
-        - {{ pin_compatible('numpy') }}
         - scipy >=1.0.0
         - numexpr
 
