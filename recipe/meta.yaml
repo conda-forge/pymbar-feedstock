@@ -18,6 +18,10 @@ build:
 test:
   imports:
     - pymbar
+  requires:
+    - pytest
+  commands:
+    - pytest --pyargs pymbar
 
 outputs:
   - name: {{ name }}-core
