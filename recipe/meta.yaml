@@ -1,6 +1,6 @@
 {% set name = "pymbar" %}
-{% set version = "4.0.3" %}
-{% set sha256 = "810566a5b973284b5beb2d9dfece0ca321b4ceb91180c124aac8fd883ed5ee68" %}
+{% set version = "4.1.0" %}
+{% set sha256 = "b9dc8fb79f0641f5d9bd179b2918545b52e081fb68055883bd3d4ae0c95add23" %}
 
 package:
   name: {{ name }}
@@ -12,8 +12,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: true  # [python_impl == 'pypy'] 
-  number: 3
+  skip: true  # [python_impl == 'pypy']
+  number: 0
 
 test:
   imports:
