@@ -21,6 +21,8 @@ test:
   requires:
     - pytest
   commands:
+    - python -c "import {{ name }}; print({{ name }}.__version__)"
+    - python -c "import {{ name }}; assert({{ name }}.__version__ == '{{ version }}')"
     - pytest --pyargs pymbar
 
 outputs:
@@ -28,19 +30,20 @@ outputs:
     script: install.sh
     requirements:
       build:
-        - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
+        - python                                 # [build_platform != target_platform]
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
       host:
+        - numpy
         - python
         - setuptools
-        - numpy
+        - setuptools_scm
       run:
+        - numexpr
         - python
         - scipy >=1.0.0
-        - numexpr
 
   - name: {{ name }}
     requirements:

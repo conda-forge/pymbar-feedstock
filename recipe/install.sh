@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-$PYTHON setup.py install --single-version-externally-managed --record record.txt
+SETUPTOOLS_SCM_PRETEND_VERSION="$PKG_VERSION" ${PYTHON} -m pip install . -vv --no-deps
