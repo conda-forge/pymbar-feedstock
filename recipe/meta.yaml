@@ -37,6 +37,7 @@ outputs:
         - {{ stdlib("c") }}
       host:
         - numpy
+        - pip
         - python
         - setuptools
         - setuptools_scm
