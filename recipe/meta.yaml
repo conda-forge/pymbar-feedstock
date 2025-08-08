@@ -43,6 +43,7 @@ outputs:
         - setuptools_scm
       run:
         - numexpr
+        - numpy < 2.3
         - python
         - scipy >=1.0.0
 
