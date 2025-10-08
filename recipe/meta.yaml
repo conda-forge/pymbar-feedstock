@@ -31,19 +31,19 @@ outputs:
     requirements:
       build:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - numpy <2.3                             # [build_platform != target_platform]
+        - numpy                                  # [build_platform != target_platform]
         - python                                 # [build_platform != target_platform]
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
       host:
-        - numpy <2.3
+        - numpy
         - pip
         - python
         - setuptools
         - setuptools_scm
       run:
         - numexpr
-        - numpy <2.3
+        - numpy
         - python
         - scipy >=1.0.0
 
