@@ -1,6 +1,6 @@
 {% set name = "pymbar" %}
-{% set version = "4.1.0" %}
-{% set sha256 = "b9dc8fb79f0641f5d9bd179b2918545b52e081fb68055883bd3d4ae0c95add23" %}
+{% set version = "4.2.0" %}
+{% set sha256 = "76690004bdf3c6ef16820ec0fc3526344bcb4626e53f6583fae63bdbea80fc7a" %}
 
 package:
   name: {{ name }}
