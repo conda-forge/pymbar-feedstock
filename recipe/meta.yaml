@@ -50,7 +50,7 @@ outputs:
         - setuptools_scm
       run:
         - {{ pin_subpackage('pymbar-core', exact=True) }}
-        - jax  # [unix]
+        - jax
       run_constrained:
         - jaxlib >=0.3
 
