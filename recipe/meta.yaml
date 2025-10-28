@@ -31,7 +31,6 @@ outputs:
     script: install.sh
     requirements:
       host:
-        - numpy
         - pip
         - python {{ python_min }}
         - setuptools
@@ -45,7 +44,10 @@ outputs:
   - name: {{ name }}
     requirements:
       host:
-        - python
+        - pip
+        - python {{ python_min }}
+        - setuptools
+        - setuptools_scm
       run:
         - {{ pin_subpackage('pymbar-core', exact=True) }}
         - jax  # [unix]
