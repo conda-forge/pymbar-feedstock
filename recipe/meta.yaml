@@ -13,13 +13,13 @@ source:
 
 build:
   noarch: python
-  skip: true  # [python_impl == 'pypy' or py<310]
   number: 1
 
 test:
   imports:
     - pymbar
   requires:
+    - python {{ python_min }}
     - pytest
   commands:
     - python -c "import {{ name }}; print({{ name }}.__version__)"
@@ -30,16 +30,10 @@ outputs:
   - name: {{ name }}-core
     script: install.sh
     requirements:
-      build:
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - numpy                                  # [build_platform != target_platform]
-        - python                                 # [build_platform != target_platform]
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
       host:
         - numpy
         - pip
-        - python
+        - python {{ python_min }}
         - setuptools
         - setuptools_scm
       run:
