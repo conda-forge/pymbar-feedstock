@@ -12,51 +12,60 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: true  # [python_impl == 'pypy' or py<310]
-  number: 1
-
-test:
-  imports:
-    - pymbar
-  requires:
-    - pytest
-  commands:
-    - python -c "import {{ name }}; print({{ name }}.__version__)"
-    - python -c "import {{ name }}; assert({{ name }}.__version__ == '{{ version }}')"
-    - pytest --pyargs pymbar
+  number: 2
 
 outputs:
   - name: {{ name }}-core
     script: install.sh
+    build:
+      noarch: python
     requirements:
-      build:
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - numpy                                  # [build_platform != target_platform]
-        - python                                 # [build_platform != target_platform]
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
       host:
-        - numpy
         - pip
-        - python
+        - python {{ python_min }}
         - setuptools
         - setuptools_scm
       run:
         - numexpr
-        - numpy
-        - python
+        - numpy 
+        - python >={{ python_min }}
         - scipy >=1.0.0
+    test:
+      imports:
+        - pymbar
+      requires:
+        - python {{ python_min }}
+        - pytest
+      commands:
+        - python -c "import {{ name }}; print({{ name }}.__version__)"
+        - python -c "import {{ name }}; assert({{ name }}.__version__ == '{{ version }}')"
+        - pytest --pyargs pymbar
 
   - name: {{ name }}
+    build:
+      noarch: python
     requirements:
       host:
-        - python
+        - pip
+        - python {{ python_min }}
+        - setuptools
+        - setuptools_scm
       run:
         - {{ pin_subpackage('pymbar-core', exact=True) }}
-        - jax  # [unix]
+        - jax
+        - python >={{ python_min }}
       run_constrained:
         - jaxlib >=0.3
-
+    test:
+      imports:
+        - pymbar
+      requires:
+        - python {{ python_min }}
+        - pytest
+      commands:
+        - python -c "import {{ name }}; print({{ name }}.__version__)"
+        - python -c "import {{ name }}; assert({{ name }}.__version__ == '{{ version }}')"
+        - pytest --pyargs pymbar
 about:
   home: http://github.com/choderalab/pymbar
   dev_url: http://github.com/choderalab/pymbar
