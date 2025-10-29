@@ -53,6 +53,7 @@ outputs:
       run:
         - {{ pin_subpackage('pymbar-core', exact=True) }}
         - jax
+        - python >={{ python_min }}
       run_constrained:
         - jaxlib >=0.3
     test:
