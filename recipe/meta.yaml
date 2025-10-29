@@ -30,16 +30,16 @@ outputs:
         - numpy 
         - python >={{ python_min }}
         - scipy >=1.0.0
-   test:
-     imports:
-       - pymbar
-     requires:
-       - python {{ python_min }}
-       - pytest
-     commands:
-       - python -c "import {{ name }}; print({{ name }}.__version__)"
-       - python -c "import {{ name }}; assert({{ name }}.__version__ == '{{ version }}')"
-       - pytest --pyargs pymbar
+    test:
+      imports:
+        - pymbar
+      requires:
+        - python {{ python_min }}
+        - pytest
+      commands:
+        - python -c "import {{ name }}; print({{ name }}.__version__)"
+        - python -c "import {{ name }}; assert({{ name }}.__version__ == '{{ version }}')"
+        - pytest --pyargs pymbar
 
   - name: {{ name }}
     build:
